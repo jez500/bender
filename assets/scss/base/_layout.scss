@@ -1,0 +1,20 @@
+
+%container,
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+
+%island,
+.island {
+  padding: 1rem;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}

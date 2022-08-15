@@ -1,0 +1,49 @@
+/**
+ * Variables
+ */
+
+
+/*
+ * Fonts
+ * ========================================================================== */
+
+$font-family: Lato, Arial, Helvetica, sans-serif;
+$font-family-title: Lato, Arial, Helvetica, sans-serif;
+
+$body-font: $font-family;
+$body-font-weight: 400;
+
+$header-font: $font-family-title;
+
+$basic-font-size: 100%;
+$paragraph: 16px;
+
+// Golden ration for 16px font-size
+$line-height: 24px;
+
+// For REM / EM
+//$basic-font-size: 62.5%;
+//$paragraph: 1.6rem;
+//$line-height: 2.4rem;
+
+
+
+/*
+ * Palette
+ * ========================================================================== */
+
+/*
+ * Basic Colors
+ * ========================================================================== */
+
+$blue: #00f;
+$red: #f00;
+$white: #fff;
+$black: #000;
+$gray: #ccc;
+
+/*
+ * Mixing Colors
+ * ========================================================================== */
+$text-color: $black;
+$inverted-text-color: $white;

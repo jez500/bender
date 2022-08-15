@@ -1,0 +1,7 @@
+.app-header {
+  background: var(--highlight-primary);
+
+  &, a {
+    color: var(--text-header);
+  }
+}
