@@ -5,3 +5,133 @@
     color: var(--text-header);
   }
 }
+
+.app-brand {
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 0 .25rem 0;
+  }
+
+  &__icon {
+    min-width: 65px;
+    display: flex;
+    justify-content: center;
+    margin-right: .75rem;
+    opacity: .4;
+
+    svg {
+      zoom: 3.1;
+    }
+  }
+
+  &__title {
+    flex: 1;
+
+    span {
+      display: block;
+      font-size: .9rem;
+      opacity: .9;
+    }
+
+    h1 {
+      line-height: 1;
+      margin: 0;
+    }
+  }
+}
+
+.app-nav {
+  background: var(--highlight-secondary);
+
+  a, button {
+    color: var(--text-header);
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint($breakpoint-med) {
+      &, .menu-open & {
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  nav ul {
+    justify-content: flex-start;
+  }
+
+  &__menu {
+    margin-top: .5rem;
+    display: none;
+    flex-direction: column;
+    order: 2;
+
+    .menu-open & {
+      display: flex;
+    }
+
+    li {
+      a {
+        display: flex;
+        align-items: center;
+        padding: .5rem;
+        margin: 0 -1rem;
+
+        &.active,
+        &:hover {
+          background: rgba(white, .1);
+        }
+      }
+
+      svg {
+        zoom: 1.2;
+        margin-right: .5rem;
+      }
+    }
+
+    @include breakpoint($breakpoint-med) {
+      display: flex;
+      flex-direction: row;
+      margin-top: 0;
+      order: 0;
+
+      li {
+        a {
+          padding: 1rem;
+          margin: -1rem 0;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    margin-left: auto;
+
+    svg {
+      zoom: 1.1;
+    }
+
+    li {
+      margin-right: 1rem;
+    }
+
+    li:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__mobile-menu {
+    display: flex;
+    justify-content: flex-end;
+
+    @include breakpoint($breakpoint-med) {
+      display: none;
+    }
+  }
+}

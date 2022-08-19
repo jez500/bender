@@ -16,27 +16,41 @@ body {
   color: $text-color;
   font-size: $paragraph;
   line-height: $line-height;
-
+  background: var(--background);
 }
 
 h1,
 h2,
 h3 {
   font-family: $header-font;
-  font-weight: 600;
+  font-weight: 400;
 }
 
+h1 { font-size: 2em; line-height: 2; }
+h2 { font-size: 1.8em; line-height: 1.5; margin: 1.5rem 0 1.75rem; }
+h3 { font-size: 1.7em; line-height: 1.5; }
+h4 { font-size: 1.5em; line-height: 1.5; }
+
+p {
+  margin-bottom: 1.5rem;
+
+  &.title-lead {
+    margin: -1.5rem 0 2.5rem;
+    font-size: 1.1em;
+    opacity: .7;
+  }
+}
 
 html,
 button,
 input,
 select,
 textarea {
-  color: $text-color;
+  color: var(--text)
 }
 
 a {
-  color: $text-color;
+  color: var(--link);
   text-decoration: none;
 
   &:visited {
@@ -46,7 +60,8 @@ a {
   &:focus,
   &:active,
   &:hover {
-    text-decoration: underline;
+    color: var(--link-hover);
+    text-decoration: none;
     outline: 0;
   }
 }

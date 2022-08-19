@@ -1,0 +1,41 @@
+
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2.5rem;
+
+  .o-btn--danger {
+    margin-left: auto;
+  }
+}
+
+.form-wrapper {
+  max-width: 800px;
+}
+
+.o-input {
+  &[type=color] {
+    padding: .2rem;
+  }
+}
+
+.o-field {
+  &__label {
+    padding-bottom: .25rem;
+    font-weight: 400;
+  }
+
+  &__message {
+    opacity: .8;
+  }
+}
+
+.field {
+  margin-bottom: var(--oruga-field-margin-bottom);
+}
+
+.o-ctrl-input {
+  .o-icon {
+    opacity: .5;
+  }
+}

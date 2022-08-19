@@ -1,0 +1,201 @@
+
+.list-page {
+  @include breakpoint($breakpoint-small) {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 3%;
+
+    > * {
+      width: 48.5%;
+    }
+  }
+
+  @include breakpoint($breakpoint-med) {
+    gap: 3.33%;
+
+    > * {
+      width: 30%;
+    }
+  }
+}
+
+.link-list-group {
+
+  &__header {
+    margin: 2.5rem 0 1.25rem;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+
+    > svg {
+      margin-right: .5rem;
+      zoom: 1.5;
+      opacity: .5;
+    }
+
+    h3 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      line-height: 1;
+    }
+
+    .sortable-ghost & {
+      cursor: grabbing;
+    }
+
+    &:hover {
+      .link-list-group__edit {
+        opacity: .5;
+      }
+    }
+  }
+
+  &__edit {
+    color: var(--text);
+    opacity: 0;
+    zoom: .85;
+
+    &:hover {
+      color: var(--text);
+      opacity: 1;
+    }
+  }
+
+  .list-group {
+    min-height: 90px;
+
+    > div:first-child a {
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+    }
+
+    > div:last-child a {
+      border-bottom-left-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+    }
+
+    &.list-empty {
+      border: 2px dashed var(--card-background);
+      text-align: center;
+      border-radius: .5rem;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        top: 2rem;
+        left: 0;
+        right: 0;
+        content: "No items";
+        opacity: 0.4;
+        font-size: 1.2em;
+      }
+    }
+
+    &__actions {
+      position: relative;
+      width: 100%;
+      margin-top: -.5rem;
+    }
+
+    &__delete {
+      @extend %button-small;
+      @extend %button-small--danger;
+      position: absolute;
+      right: -.3rem;
+      top: -2.25rem;
+      display: none;
+    }
+  }
+
+  &:hover .list-group__actions .list-group__delete {
+    display: block;
+  }
+}
+
+.link-list-item {
+  transition: .3s cubic-bezier(.165,.84,.44,1);
+  text-align: left;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-3px);
+
+    .link-list-item__icon {
+      color: var(--highlight-secondary);
+    }
+
+    .link-list-item__edit {
+      display: block;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 1.3rem;
+    background: var(--card-background);
+    box-shadow: 0 2px 15px 0 var(--card-shadow);
+    cursor: pointer;
+
+    &, &:hover {
+      text-decoration: none;
+      color: var(--text);
+    }
+  }
+
+  &__icon {
+    width: 48px;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--highlight-secondary);
+
+    svg {
+      zoom: 2.5;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  &__title {
+    display: block;
+    font-size: 1.1em;
+    line-height: 1.2em;
+    font-weight: 600;
+  }
+
+  &__sub-title {
+    display: block;
+    font-size: .9em;
+    font-weight: 400;
+    line-height: 1.25;
+    opacity: .8;
+  }
+
+  &__edit {
+    @extend %button-small;
+    position: absolute;
+    bottom: 1rem;
+    right: -.3rem;
+    display: none;
+
+    span {
+      opacity: .7;
+    }
+
+    &, &:hover {
+      color: var(--text-header);
+    }
+
+    &:hover span {
+      opacity: 1;
+    }
+  }
+}

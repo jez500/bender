@@ -1,42 +1,89 @@
 
-:root {
-  --highlight-primary: #3367d6;
-  --highlight-secondary: #4285f4;
+@mixin theme-light {
+  --highlight-primary: #4557d7;
+  --highlight-secondary: #5a6df4;
   --highlight-hover: #5a95f5;
   --background: #f5f5f5;
   --card-background: #ffffff;
   --text: #363636;
   --text-header: #ffffff;
+  --text-button: #ffffff;
   --text-title: #303030;
   --text-subtitle: #424242;
   --card-shadow: rgba(0, 0, 0, 0.1);
   --link: #3273dc;
   --link-hover: #363636;
   --background-image: initial;
+  // Oruga.
+  --oruga-input-background-color: var(--card-background);
+  --oruga-input-color: var(--text);
+  --oruga-input-border-color: #dbdbdb;
+  --oruga-input-padding: 1.25rem .75rem;
+  --oruga-select-background-color: var(--card-background);
+  --oruga-select-color: var(--text);
+  --oruga-select-border-color: var(--oruga-input-border-color);
+  --oruga-field-label-color: var(--text);
+  --oruga-button-background-color: var(--highlight-primary);
+  --oruga-button-border: 1px solid var(--highlight-secondary);
+  --oruga-field-margin-bottom: 1.5rem;
+  --oruga-base-font-size: 1.1em;
+  --oruga-button-padding: 1rem 1.5rem;
+  --oruga-notification-padding: .5rem 1.5rem;
+  --oruga-autocomplete-menu-background: var(--card-background);
+  --oruga-autocomplete-item-color: var(--text);
+  --oruga-autocomplete-item-hover-color: var(--text-header);
+  --oruga-autocomplete-item-hover-background-color: var(--highlight-primary);
+  --oruga-autocomplete-menu-box-shadow: none;
+  --oruga-checkbox-active-background-color: var(--highlight-primary);
+  --oruga-checkbox-background-color: var(--highlight-primary);
+  --oruga-checkbox-border-color: var(--oruga-checkbox-background-color);
+  --oruga-radio-active-background-color: var(--highlight-primary);
+  --oruga-radio-size: 1.3rem;
+  --oruga-checkbox-border-width: 4px;
+  --oruga-checkbox-size: 1.3rem;
+  --oruga-tooltip-background-color: #3c3a3e;
+  --oruga-dropdown-menu-background: var(--oruga-tooltip-background-color);
+  --oruga-dropdown-item-hover-background-color: #{rgba(white, 0.1)};
+  --oruga-variant-danger: #dd2f2f;
+  --oruga-field-message-font-size: .85em;
+  --oruga-tabs-link-active-border-bottom-color: var(--highlight-primary);
+  --oruga-tabs-link-active-color: var(--highlight-primary);
+  --oruga-tabs-border-bottom-width: 2px;
+  --oruga-tabs-content-padding: 1rem 0;
+  --oruga-tabs-link-hover-background-color: #{rgba(black, 0.1)};
+  --oruga-tabs-link-color: #999;
 }
 
 @mixin dark-mode {
-  --highlight-primary: #2d3f63;
-  --highlight-secondary: #3d5482;
-  --highlight-hover: #4a659a;
-  --background: #131313;
+  --background: #1f1f1f;
   --card-background: #2b2b2b;
   --text: #eaeaea;
   --text-header: #ffffff;
   --text-title: #fafafa;
   --text-subtitle: #f5f5f5;
-  --card-shadow: rgba(0, 0, 0, 0.4);
+  --card-shadow: rgba(0, 0, 0, 0.2);
   --link: #3273dc;
   --link-hover: #5c7ab4;
   --background-image: initial;
+  // Oruga.
+  --oruga-input-background-color: #2b2b2b;
+  --oruga-input-color: white;
+  --oruga-input-border-color: #666;
+  --oruga-field-label-color: #aaa;
+  --oruga-tabs-link-color: #ccc;
+}
+
+body.theme--light,
+body {
+  @include theme-light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  body.theme--auto {
     @include dark-mode;
   }
 }
 
-body .dark-mode {
+body.theme--dark {
   @include dark-mode;
 }

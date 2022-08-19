@@ -1,21 +1,22 @@
 <template>
-  <AppLayout>
-    <div class="container">
-      <p class="subtitle">
-        Oruga UI is like a caterpillar, minimal and yet functional.<br />It's in
-        your hands turning it into a butterfly.
-      </p>
+  <AppLayout v-if="loaded" :config="config">
+
+    <div v-if="config.pages" class="container">
+
+      <LinkList v-if="pageLinks.length > 0" :value="pageLinks" @input="updated"></LinkList>
+
+      <EmptyPage v-else />
+
     </div>
+
   </AppLayout>
 </template>
 
 <script>
-import AppLayout from "../components/layouts/AppLayout";
+import page from "../mixins/page";
 
 export default {
   name: 'IndexPage',
-  components: {
-    AppLayout
-  },
+  mixins: [page],
 }
 </script>

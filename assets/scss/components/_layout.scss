@@ -3,3 +3,26 @@
   background: var(--background);
   color: var(--text);
 }
+
+.app-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  height: 100vh;
+}
+
+.app-empty-page {
+  margin-top: 3rem;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    opacity: .7;
+    font-size: 1.3em;
+    margin-bottom: 2.5rem;
+  }
+}

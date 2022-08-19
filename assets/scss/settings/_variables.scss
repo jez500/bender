@@ -7,8 +7,8 @@
  * Fonts
  * ========================================================================== */
 
-$font-family: Lato, Arial, Helvetica, sans-serif;
-$font-family-title: Lato, Arial, Helvetica, sans-serif;
+$font-family: Raleway, Lato, Arial, Helvetica, sans-serif;
+$font-family-title: Raleway, Lato, Arial, Helvetica, sans-serif;
 
 $body-font: $font-family;
 $body-font-weight: 400;
@@ -47,3 +47,10 @@ $gray: #ccc;
  * ========================================================================== */
 $text-color: $black;
 $inverted-text-color: $white;
+
+/*
+ * Breakpoints
+ * ========================================================================== */
+$breakpoint-small: 680px;
+$breakpoint-med: 980px;
+$breakpoint-large: 1200px;
