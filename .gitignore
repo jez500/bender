@@ -91,3 +91,4 @@ sw.*
 
 # Config
 static/config.json.bak
+static/config.json

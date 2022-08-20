@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CONFIG_FILENAME, CONFIG_FILEPATH } from "../api/config";
+import {CONFIG_FILEPATH, CONFIG_GET_PATH} from "../api/config";
 
 export default {
   props: {
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     async getConfig() {
-      const res = await axios.get(CONFIG_FILENAME)
+      const res = await axios.get(CONFIG_GET_PATH)
       try {
         this.config = res.data
         this.loaded = true

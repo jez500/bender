@@ -1,68 +1,62 @@
-# bender
+# Bender dashboard
 
-## Build Setup
+A link dashboard that can be managed without any code. Ideal for service listings on your server. **Heavily**
+inspired by [Homer dashboard](https://github.com/bastienwirtz/homer) and aims to provide the same functionality
+with one major change, **No yaml required**! 
 
-```bash
-# install dependencies
-$ npm install
+All links can be managed via the UI including dragging and dropping your links to re-order or change groups. 
+New pages and links can be added via the UI, as can global settings such as the app title, icon and theme.
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+## Under the hood
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+* Built using NuxtJS & Vue2
+* Requires no database, all config is stored in a single config file `static/config.json`
+* FontAwesome solid and brand icons available with inbuilt search
+* Image lookup supported via anything in `static/images`
+* Light & Dark mode
 
-# generate static project
-$ npm run generate
+## Running without docker
+
+* Requires NodeJS 14+ 
+* Run `npm run start`
+* Visit http://localhost:8080
+
+## Running with docker
+
+You should volume mount the `/app/static` directory as it contains the `config.json` (the file containing all 
+links and settings which you will want to persist). It also contains an `images` directory which is used with 
+the image lookup.
+
+```sh
+docker run -d \
+  --name bender \
+  -p 8080:8080 \
+  -v </your/local/assets/>:/app/static \
+  --restart=always \
+  jez500/bender:latest
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+#### With docker-compose
 
-## Special Directories
+A [`docker-compose.yml`](docker-compose.yml) file is available as an example. It must be edited to match 
+your needs. You probably want to adjust the port mapping and volume binding (equivalent to `-p` and `-v` arguments).
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+Then launch the container:
 
-### `assets`
+```sh
+cd /path/to/docker-compose.yml/
+docker-compose up -d
+```
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+## Developing
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+To develop locally, you can just run `npm run dev` and it will serve the app on `http://localhost:8080` 
+with live reloading of edits.
 
-### `components`
+All PRs are welcome!
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+## Author
+[Jeremy Graham](https://jez.me)
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+## Attribution
+Amazing contributors to [Homer](https://github.com/bastienwirtz/homer/graphs/contributors)

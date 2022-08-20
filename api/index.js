@@ -20,6 +20,32 @@ app.post('/save', (req, res) => {
   return res.status(200).send();
 })
 
+// Save
+app.get('/config', async (req, res) => {
+  const readConfig = async () => {
+    let config = {}
+    try {
+      const configContent = await fsPromises.readFile(CONFIG_FILEPATH);
+      config = JSON.parse(configContent)
+    } catch (err) {
+      console.error('Unable to read config file, ensure it is valid json and permissions correct');
+    }
+    return res.status(200).send(config);
+  }
+
+  try {
+    if (fs.existsSync(CONFIG_FILEPATH)) {
+      return await readConfig();
+    } else {
+      console.log('config.json missing, recreating from default')
+      fs.writeFileSync(CONFIG_FILEPATH, fs.readFileSync(CONFIG_FILEPATH + '.default'))
+      return await readConfig();
+    }
+  } catch (err) {
+    console.error('Error recreating config file');
+  }
+})
+
 // Icon lookup
 app.get('/icon', (req, res) => {
   const icons = Object.values(fas)
