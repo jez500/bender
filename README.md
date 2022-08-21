@@ -7,6 +7,8 @@ with one major change, **No yaml required**!
 All links can be managed via the UI including dragging and dropping your links to re-order or change groups. 
 New pages and links can be added via the UI, as can global settings such as the app title, icon and theme.
 
+![Bender link dashboard](https://raw.github.com/jez500/bender/master/docs/screenshot.gif)
+
 ## Under the hood
 
 * Built using NuxtJS & Vue2
