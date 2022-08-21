@@ -34,7 +34,7 @@ export default {
       }
     },
     saveConfig(config) {
-      axios.post('/save', config)
+      return axios.post('/save', config)
         .then(data =>
           this.$oruga.notification.open({
             message: 'Saved changes',
@@ -55,7 +55,7 @@ export default {
     saveAndBack(page) {
       const path = page === 'default' ? '/' : `/page/${page}`
       this.saveConfig(this.config)
-      this.$router.push(path)
+        .then(() => this.$router.push(path))
     },
   }
 }
