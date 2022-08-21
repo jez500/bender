@@ -1,22 +1,27 @@
 <template>
   <o-field :label="label" :message="message" class="image-selector">
+    <div class="image-selector__image">
+      <img v-if="image" :src="`/images/${image}`" />
+    </div>
     <o-autocomplete
       v-model="valueMutable"
       :data="data"
       placeholder="filename"
       field="file"
       :loading="isFetching"
-      icon="magnifying-glass"
+      :icon="icon"
       icon-pack="fas"
       check-infinite-scroll
       :debounce-typing="500"
       clearable
+      expanded
+      class="image-selector__field"
       @typing="getAsyncData"
       @select="optionSelected"
     >
       <template slot-scope="props">
-        <div class="icon-selector__option">
-            {{ props.option.file }}
+        <div class="image-selector__option">
+          <img :src="`/images/${props.option.file}`" /><span>{{ props.option.file }}</span>
         </div>
       </template>
 
@@ -25,6 +30,7 @@
 </template>
 
 <script>
+const DEFAULT_ICON = 'magnifying-glass'
 export default {
   name: "ImageSelector",
   props: {
@@ -47,13 +53,21 @@ export default {
       data: [],
       selected: null,
       isFetching: false,
+      image: '',
+    }
+  },
+  computed: {
+    icon() {
+      return this.image ? 'none' : DEFAULT_ICON
     }
   },
   mounted() {
     this.valueMutable = this.value
+    this.image = this.valueMutable || ''
   },
   methods: {
     optionSelected(option) {
+      this.image = option?.file || ''
       this.$emit('input', option?.file || '')
     },
     getAsyncData(name) {

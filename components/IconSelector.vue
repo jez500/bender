@@ -1,16 +1,20 @@
 <template>
   <o-field :label="label" class="icon-selector">
+    <FontAwesomeIcon
+      class="icon-selector__icon"
+      :icon="code"
+    />
     <o-autocomplete
       v-model="valueMutable"
       :data="data"
       placeholder="robot"
       field="code"
       :loading="isFetching"
-      :icon="icon"
-      :icon-pack="iconPack"
       check-infinite-scroll
       :debounce-typing="500"
+      class="icon-selector__field"
       clearable
+      expanded
       @typing="getAsyncData"
       @select="optionSelected"
     >
@@ -52,7 +56,8 @@ export default {
       page: 1,
       totalPages: 1,
       icon: '',
-      iconPack: 'fas'
+      iconPack: 'fas',
+      code: DEFAULT_ICON,
     }
   },
   created() {
@@ -63,9 +68,9 @@ export default {
   },
   methods: {
     optionSelected(option) {
-      const code = option?.code || ''
-      this.setIconFromCode(code)
-      this.$emit('input', code)
+      this.code = option?.code || ''
+      this.setIconFromCode(this.code)
+      this.$emit('input', this.code)
     },
     getAsyncData(name) {
       this.$emit('input', name)

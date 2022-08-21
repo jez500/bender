@@ -1,0 +1,44 @@
+.image-selector,
+.icon-selector {
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    left: .75rem;
+    opacity: .5;
+    margin-top: .75rem;
+    z-index: 1;
+  }
+
+  &__image {
+    position: absolute;
+    left: .5rem;
+    margin-top: .5rem;
+    z-index: 1;
+
+    img {
+      height: 25px;
+      max-width: 25px;
+    }
+  }
+
+  &__field {
+    input {
+      border-radius: var(--oruga-input-border-radius, 4px) !important;
+
+      .icon-selector & {
+        padding-left: var(--oruga-input-height, 2.25em);
+      }
+    }
+  }
+}
+
+.image-selector__option {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 25px;
+    margin-right: .5rem;
+  }
+}
