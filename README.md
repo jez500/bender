@@ -50,6 +50,17 @@ cd /path/to/docker-compose.yml/
 docker-compose up -d
 ```
 
+## Migrating from Homer
+
+Experimental: Backup `static/config.json` first.
+
+You can import your links from homer by visiting `/import`, pasting the Homer YAML then
+clicking `Parse`. If the YAML is valid, it should indicate links and groups found. Next, select the page you
+want to import into and finally click `Import links` to overwrite all the links on the selected page with
+what was in the YAML.
+
+Note: If using images, copy them all into `static/images`.
+
 ## Developing
 
 To develop locally, you can just run `npm run dev` and it will serve the app on `http://localhost:8080` 

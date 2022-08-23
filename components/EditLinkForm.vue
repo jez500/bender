@@ -94,6 +94,7 @@ export default {
         title: '',
         href: '',
         icon: '',
+        image: '',
         overrideIconColor: false,
         iconColor: ''
       },

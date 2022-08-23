@@ -2,6 +2,7 @@
   min-height: 100vh;
   background: var(--background);
   color: var(--text);
+  padding-bottom: 3rem;
 }
 
 .app-loading {
@@ -20,9 +21,15 @@
     margin-bottom: 1rem;
   }
 
-  p {
+  &__lead {
     opacity: .7;
     font-size: 1.3em;
     margin-bottom: 2.5rem;
+  }
+
+  &__sub {
+    opacity: .7;
+    font-size: .9em;
+    margin: 1.5rem 0;
   }
 }
