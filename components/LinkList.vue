@@ -1,6 +1,7 @@
 <template>
   <div class="link-list">
-    <draggable
+    <component
+      :is="draggableWrapper"
       id="first"
       data-source="juju"
       :list="valueMutable"
@@ -15,12 +16,13 @@
         <div class="link-list-group__header">
           <FontAwesomeIcon v-if="group.icon" :icon="group.icon" />
           <h3 v-text="group.title" />
-          <NuxtLink :to="`/page/${page}/edit-group?id=${group.id}`" class="link-list-group__edit">
+          <NuxtLink v-if="mutable" :to="`/page/${page}/edit-group?id=${group.id}`" class="link-list-group__edit">
             <FontAwesomeIcon icon="fas fa-pen" />
           </NuxtLink>
         </div>
 
-        <draggable
+        <component
+          :is="draggableWrapper"
           id="first"
           data-source="juju"
           :list="group.items"
@@ -35,12 +37,12 @@
             :key="element.id"
             class="list-group-item item"
           >
-            <LinkListItem :item="element" :group="group.id" />
+            <LinkListItem :item="element" :group="group.id" :config="config" />
           </div>
 
-        </draggable>
+        </component>
 
-        <div v-if="group.items.length === 0" class="list-group__actions">
+        <div v-if="group.items.length === 0 && mutable" class="list-group__actions">
             <span class="list-group__delete" @click="deleteGroup(group.id)">
               <o-tooltip label="Delete group">
                 <FontAwesomeIcon icon="fas fa-trash" />
@@ -49,7 +51,7 @@
         </div>
 
       </div>
-    </draggable>
+    </component>
 
   </div>
 </template>
@@ -69,12 +71,24 @@ export default {
     value: {
       type: Array,
       default: () => [],
-    }
+    },
+    config: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
       valueMutable: this.value,
       page: this.$route.params.slug || 'default'
+    }
+  },
+  computed: {
+    mutable() {
+      return ! this.config.disableEdit
+    },
+    draggableWrapper() {
+      return this.mutable ? 'draggable' : 'div'
     }
   },
   methods: {

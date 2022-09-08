@@ -3,6 +3,7 @@
   "title": "Dashboard",
   "titleIcon": "fas fa-robot",
   "theme": "auto",
+  "disableEdit": false,
   "pages": {
     "default": {
       "title": "Home",

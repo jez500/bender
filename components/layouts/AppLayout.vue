@@ -38,7 +38,7 @@
                   </button>
                 </li>
 
-                <li v-if="onPage">
+                <li v-if="onPage && mutable">
                   <NuxtLink :to="`/page/${page}/edit-page`">
                     <o-tooltip label="Edit this page">
                       <FontAwesomeIcon icon="fas fa-pen" />
@@ -46,7 +46,7 @@
                   </NuxtLink>
                 </li>
 
-                <li>
+                <li v-if="mutable">
                   <o-dropdown aria-role="list">
                     <template slot="trigger">
                       <o-tooltip label="Add link or page">
@@ -104,6 +104,7 @@ export default {
         title: '',
         subTitle: '',
         theme: 'auto',
+        disableEdit: false,
       })
     }
   },
@@ -118,6 +119,11 @@ export default {
         {href: '/settings', label: 'Settings', icon: 'fas fa-gear'},
       ]
     }
+  },
+  computed: {
+    mutable() {
+      return ! this.config.disableEdit
+    },
   },
   mounted() {
     this.appLinks = map(orderBy(this.config.pages, 'order'), (item) => (

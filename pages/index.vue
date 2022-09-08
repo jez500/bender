@@ -3,7 +3,7 @@
 
     <div v-if="config.pages" class="container">
 
-      <LinkList v-if="pageLinks.length > 0" :value="pageLinks" @input="updated"></LinkList>
+      <LinkList v-if="pageLinks.length > 0" :value="pageLinks" :config="config" @input="updated"></LinkList>
 
       <EmptyPage v-else />
 

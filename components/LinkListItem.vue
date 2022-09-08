@@ -10,7 +10,7 @@
         <span class="link-list-item__sub-title">{{ item.subTitle }}</span>
       </span>
     </a>
-    <NuxtLink :to="`/page/${page}/edit-link?id=${group}-${item.id}`" class="link-list-item__edit">
+    <NuxtLink v-if="mutable" :to="`/page/${page}/edit-link?id=${group}-${item.id}`" class="link-list-item__edit">
       <o-tooltip label="Edit link">
         <FontAwesomeIcon icon="fas fa-pen" />
       </o-tooltip>
@@ -29,6 +29,10 @@ export default {
     group: {
       type: String,
       required: true,
+    },
+    config: {
+      type: Object,
+      default: () => ({}),
     },
   },
   data() {
@@ -52,6 +56,9 @@ export default {
       }
 
       return attrs
+    },
+    mutable() {
+      return ! this.config.disableEdit
     }
   }
 }

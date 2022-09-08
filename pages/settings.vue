@@ -21,6 +21,11 @@
           </o-select>
         </o-field>
 
+
+        <div class="field">
+          <o-checkbox v-model="config.disableEdit">Disable edit mode, hiding edit buttons and preventing drag and drop</o-checkbox>
+        </div>
+
         <div class="form-actions">
           <o-button @click.prevent="save">Save changes</o-button>
         </div>
