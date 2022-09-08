@@ -7,7 +7,7 @@ services:
     #build: .
     container_name: homer
     volumes:
-      - /your/local/assets/:/www/assets
+      - /your/local/assets/:/app/static
     ports:
       - 8080:8080
     user: 1000:1000 # default
