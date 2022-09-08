@@ -9,7 +9,7 @@
           <div class="container island">
             <NuxtLink to="/" class="app-brand__inner">
               <div class="app-brand__icon">
-                <FontAwesomeIcon :icon="config.titleIcon" />
+                <FontAwesomeIcon :icon="config.titleIcon" size="3x" />
               </div>
               <div class="app-brand__title">
                 <span v-if="config.titlePrefix">{{ config.titlePrefix }}</span>

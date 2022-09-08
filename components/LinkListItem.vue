@@ -3,7 +3,7 @@
     <a :href="item.href" class="link-list-item__link" v-bind="linkAttributes">
       <span class="link-list-item__icon" :style="iconStyle">
         <img v-if="item.image" :src="`/images/${item.image}`" />
-        <FontAwesomeIcon v-else-if="icon" :icon="icon" />
+        <FontAwesomeIcon v-else-if="icon" :icon="icon" size="2x" />
       </span>
       <span class="link-list-item__content">
         <strong class="link-list-item__title">{{ item.title }}</strong>
