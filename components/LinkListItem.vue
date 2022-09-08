@@ -1,6 +1,6 @@
 <template>
   <div class="link-list-item">
-    <a :href="item.href" class="link-list-item__link">
+    <a :href="item.href" class="link-list-item__link" v-bind="linkAttributes">
       <span class="link-list-item__icon" :style="iconStyle">
         <img v-if="item.image" :src="`/images/${item.image}`" />
         <FontAwesomeIcon v-else-if="icon" :icon="icon" />
@@ -33,7 +33,8 @@ export default {
   },
   data() {
     return {
-      page: this.$route.params.slug || 'default'
+      page: this.$route.params.slug || 'default',
+      newWinTarget: '_blank',
     }
   },
   computed: {
@@ -42,6 +43,15 @@ export default {
     },
     iconStyle() {
       return this.item.iconColor ? {color: this.item.iconColor} : {}
+    },
+    linkAttributes() {
+      const attrs = {}
+
+      if (this.item.newWindow) {
+        attrs.target = this.newWinTarget
+      }
+
+      return attrs
     }
   }
 }

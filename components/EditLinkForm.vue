@@ -31,6 +31,10 @@
           <o-input v-model="valueMutable.href" required />
         </o-field>
 
+        <div class="field">
+          <o-checkbox v-model="valueMutable.newWindow">Open in a new window</o-checkbox>
+        </div>
+
         <o-tabs v-if="iconType" v-model="iconType">
 
           <o-tab-item value="icon" label="Icon">
@@ -95,11 +99,13 @@ export default {
         href: '',
         icon: '',
         image: '',
+        newWindow: false,
         overrideIconColor: false,
         iconColor: ''
       },
       newGroupId: '__NEW_ID__',
       iconType: '',
+      linkProps: ['title', 'href', 'icon', 'iconColor', 'subTitle', 'image', 'newWindow'],
     }
   },
   computed: {
@@ -139,7 +145,7 @@ export default {
     save() {
       if (! this.validate()) return alert('Group, title and link url are required');
 
-      const newLink = pick(this.valueMutable, ['title', 'href', 'icon', 'iconColor', 'subTitle', 'image'])
+      const newLink = pick(this.valueMutable, this.linkProps)
       newLink.id = this.editId ? this.editId.link : `link_${Date.now()}`;
       let groupId = this.valueMutable.group;
 
